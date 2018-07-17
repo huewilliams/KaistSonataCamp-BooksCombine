@@ -22,6 +22,7 @@ def best():
 
 def kyobo():
     print('교보문고 베스트셀러 목록')
+    mKyobo = Tk()
 
     req = requests.get('http://www.kyobobook.co.kr/bestseller/bestSellerMain.laf?orderClick=d79')
 
@@ -71,12 +72,14 @@ def kyobo():
     for k in data.keys():
         i = i + 1
         print('[' + str(i) + ']  ' + k)
-        a = Button(master, text='[' + str(i) + ']  ' + k, command=practice(i))
+        a = Button(mKyobo, text='[' + str(i) + ']  ' + k, command=practice(i))
         a.grid(row=i, column=10)
 
 
 def book11st():
     print('11번가 베스트셀러 목록')
+    m11st = Tk()
+
     req = requests.get('http://books.11st.co.kr/booksmall/BooksAction.tmall?ID=BOOKS&ctgrNo=63548')
 
     html = req.text
@@ -127,7 +130,7 @@ def book11st():
     for k in data.keys():
         i = i + 1
         print('[' + str(i) + ']  ' + k)
-        a = Button(master, text='[' + str(i) + ']  ' + k, command=practice(i))
+        a = Button(m11st, text='[' + str(i) + ']  ' + k, command=practice(i))
         a.grid(row=i, column=10)
         if (i >= 20):
             break
@@ -136,6 +139,7 @@ def book11st():
 def ridi():
     print('리디북스 베스트셀러 목록')
 
+    mRidi = Tk()
     req = requests.get('https://ridibooks.com/bestsellers/general?order=monthly')
 
     html = req.text
@@ -187,7 +191,7 @@ def ridi():
         i = i + 1
         print('[' + str(i) + ']  ' + k)
         tmp = k.strip()
-        a = Button(master, text='[' + str(i) + ']  ' + tmp, command=practice(i))
+        a = Button(mRidi, text='[' + str(i) + ']  ' + tmp, command=practice(i))
         a.grid(row=i, column=10)
         if (i >= 20):
             break
